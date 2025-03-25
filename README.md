@@ -108,6 +108,7 @@ Assuming 70% recovery success from interventions
 2 0.5 FTE for risk management operations
 
 3 Integration with:
+
 . Payment gateways (Stripe/Recurly)
 
 . CRM (Salesforce/Hubspot)
