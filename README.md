@@ -94,8 +94,11 @@ Assuming 70% recovery success from interventions
 
 ## Key Features
 ✅ Automated risk scoring every 24h
+
 ✅ Financial impact projections
+
 ✅ SHAP explainability for risk reasons
+
 ✅ CRM integration ready
 
 ## Implementation Requirements
