@@ -1,96 +1,104 @@
 # **PaymentGuard-AI**
-ML system predicts SaaS payment defaults **30 days early** using payment and usage data. **87% accuracy (AUC 0.89)** on **7k+ customers**, flags **$142k/mo at-risk revenue**. Targets key risks like **e-checks and short-term contracts**. Reduces losses by **38%** through alerts and offers.
+Built an ML model to predict subscription payment defaults 30 days early using customer and billing data. Achieved 87% accuracy, flagged $140K+/mo in at-risk revenue, and enabled proactive actions to reduce churn and recover payments.
+# Payment Default Risk Prediction (ML Project)
 
-## **Predictive Subscription Payment Default Risk Analysis**
-Machine Learning Solution for SaaS Revenue Protection
+Predict which subscription customers are likely to **miss a payment** 30 days in advance — helping SaaS companies **reduce revenue loss** and take action early.
 
-### **Business Problem**
-Identifying customers at risk of **subscription payment default 30 days in advance** helps:
-- Reduce **5-15% MRR revenue leakage** in SaaS
-- Decrease **42% of involuntary churn** caused by failed payments
-- Improve **cash flow predictability**
+---
 
-## **Key Metrics**
-| Metric                      | Target | Current  | Impact        |
-|-----------------------------|--------|----------|---------------|
-| Default Prediction Accuracy | >85%   | 87.2%    | High          |
-| Precision (False Positives) | >75%   | 78.9%    | Medium        |
-| Recall (Missed Defaults)    | >80%   | 83.4%    | Critical      |
-| AUC-ROC                     | >0.85  | 0.89     | High          |
-| MRR at Risk Identified      | -      | $142K/mo | Direct Impact |
+## Project Overview
+This project uses machine learning to flag customers at risk of **defaulting on their payments** before it happens. With this system, SaaS businesses can:
+- Reduce revenue leakage from failed payments
+- Recover at-risk revenue proactively
+- Improve retention and cash flow
 
-## **Dataset Overview**
-- **Source**: Kaggle Telco Customer Churn ([Dataset Link])
-- **Features**: Payment methods, tenure, monthly charges, contract type, service usage
-- **Records**: **7,043 customers** (monthly subscriptions)
-- **Target**: **DefaultRisk** (1 = High Risk, 0 = Low Risk)
+---
 
-## **Data Preprocessing**
-- Removed **11 invalid records (0.15%)**
-- Created features:
-  - `Monthly_to_Total_Ratio = MonthlyCharges / TotalCharges`
-  - `Tenure_Group = ['New', 'Established', 'Long-term']`
-- Outlier handling: **Removed 2.1% extreme MonthlyCharges**
+## Key Results
+- **87% prediction accuracy** (AUC: 0.89)
+- Trained on **7,000+ customer records**
+- Flags over **$140,000/month** in at-risk revenue
+- Estimated **38% reduction in losses** with action
 
-## **Model Development**
+---
+
+## Problem Statement
+Failed payments lead to lost revenue and customer churn for SaaS companies. The goal was to:
+- **Predict failed payments 30 days early**
+- Group customers by risk level (High, Medium, Low)
+- Recommend actions to **reduce default and recover revenue**
+
+---
+
+## Dataset
+- **Source**: Kaggle (Telco Customer Churn dataset)
+- **Records**: 7,043 subscription customers
+- **Features used**: Payment method, contract type, monthly charges, tenure, usage
+- **Target column**: DefaultRisk (1 = high risk, 0 = low risk)
+
+---
+
+## Data Preparation
+- Removed invalid/missing entries (0.15%)
+- Created features like:
+  - `Monthly_to_Total_Ratio`
+  - `Tenure_Group` (New, Established, Long-term)
+- Removed outliers in `MonthlyCharges`
+
+---
+
+## Model Details
 - **Algorithm**: Gradient Boosting Classifier
-- **Key Parameters**:
-  ```
-  n_estimators = 200
-  learning_rate = 0.05
-  max_depth = 5
-  ```
+- **Parameters**:
+  - n_estimators: 200
+  - learning_rate: 0.05
+  - max_depth: 5
 - **Feature Importance**:
-  1. **Contract Type** (34%)
-  2. **Payment Method** (28%)
-  3. **Monthly Charges** (22%)
+  1. Contract Type
+  2. Payment Method
+  3. Monthly Charges
 
-## **Business Impact Analysis**
-| Risk Segment       | Customers | Default Prob | MRR at Risk | Recoverable* |
-|--------------------|-----------|--------------|-------------|--------------|
-| High (≥0.65)       | 217       | 82%          | $38,740     | $31,766      |
-| Medium (0.35-0.65) | 492       | 51%          | $67,210     | $34,277      |
-| Low (<0.35)        | 891       | 12%          | $36,150     | $4,338       |
+---
 
-_(*Assuming 70% recovery success from interventions.)_
+## Risk Scoring Output
+| Risk Segment | Customers | Avg Default Probability | Monthly Revenue at Risk |
+|--------------|-----------|--------------------------|--------------------------|
+| High Risk    | 217       | 82%                      | $38,740                  |
+| Medium Risk  | 492       | 51%                      | $67,210                  |
+| Low Risk     | 891       | 12%                      | $36,150                  |
 
-## **Action Recommendations**
-**High Risk (Top 15%)**
-- Personal account manager contact within **48h**
-- Flexible payment plans (**3+ options**)
-- Service credit offers for payment updates
+---
 
-**Medium Risk (Next 35%)**
-- Automated payment reminders (**7/3/1 days before due date**)
-- Incentives for updating payment methods (**$10 credit**)
-- Usage optimization consultations
+## Action Plan (Based on Risk)
+**High Risk:**
+- Contact within 48 hours
+- Offer flexible payment plans
 
-**Low Risk (Bottom 50%)**
-- Annual payment discounts (**15% OFF**)
-- Loyalty program enrollment
-- Upsell opportunities
+**Medium Risk:**
+- Send automated reminders (7, 3, 1 days before due date)
+- $10 credit for updating payment info
 
-## **Key Features**
-- **Automated risk scoring** (updated every 24h)
-- **Financial impact projections**
-- **SHAP explainability** (understand risk reasons)
+**Low Risk:**
+- Annual plan discount offers
+- Loyalty programs and upsells
 
-## **Implementation Requirements**
-1. Monthly data refresh from billing system
-2. **0.5 FTE** for risk management operations
+---
 
-## **Assumptions**
-- Customers must have **at least 6 months tenure** for accurate predictions
-- **70% intervention success rate**
-- **Daily payment data updates**
+## Tech Stack
+- Python (pandas, scikit-learn, matplotlib, seaborn)
+- Jupyter Notebook
 
-## **Technical Appendix**
-- **Dataset**: Kaggle Telco Churn Dataset (**7K+ customers**)
-- **Key Features**: Payment patterns, tenure metrics, usage trends
-- **Model**: Gradient Boosting (**AUC-ROC: 0.89**)
-- **Refresh Cycle**: **Daily predictions, monthly retraining**
+---
 
-## **Contact**
-[Your Name] | [Title]
-[Email] | [Phone]
+## Next Steps
+- Add API or Streamlit dashboard for business use
+- Integrate with billing systems for daily risk updates
+
+---
+
+## Author
+Your Name  
+Email: your.email@example.com  
+GitHub: [yourusername](https://github.com/yourusername)
+
 
