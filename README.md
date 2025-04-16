@@ -98,7 +98,7 @@ Failed payments lead to lost revenue and customer churn for SaaS companies. The 
 
 ## Author
 Your Name  
-Email: your.email@example.com  
+Email: pranjalkpatil07@outlook.com  
 GitHub: [yourusername](https://github.com/yourusername)
 
 
